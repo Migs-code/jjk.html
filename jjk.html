@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIGGY | JJK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Outfit:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://w.wallhaven.cc/full/z8/wallhaven-z89jxy.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .nav-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff004c;
+        }
+
+        .out-design {
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .designs {
+            text-align: center;
+        }
+
+        .designs h1 {
+            font-size: clamp(60px, 15vw, 150px);
+            line-height: 0.8;
+            letter-spacing: -2px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .designs span {
+            display: block;
+            color: #ff004c;
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(40px, 10vw, 100px);
+            margin-top: 10px;
+            text-shadow: 4px 4px 0px #5d00ff;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: #000;
+            border: 1px solid #ff004c;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .close-trigger {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-container">
+        <div class="logo">呪術</div>
+        <ul class="nav-links">
+            <li><a id="open-about" href="#">About</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="modal-about" class="modal-overlay">
+        <div class="modal">
+            <h2 style="font-family: 'Permanent Marker'; font-size: 30px;">LIMITLESS</h2>
+            <p style="color: #888; margin-top: 10px;">A minimalist sorcerer interface designed for maximum impact.</p>
+            <button class="close-trigger">Dismiss</button>
+        </div>
+    </div>
+
+    <div class="out-design">
+        <div class="designs">
+           <h1>Hollow</h1>
+           <span>Nigga</span>
+        </div>
+    </div>
+
+    <script>
+        const aboutBtn = document.getElementById('open-about');
+        const modal = document.getElementById('modal-about');
+        const close = document.querySelector('.close-trigger');
+
+        aboutBtn.onclick = (e) => {
+            e.preventDefault();
+            modal.classList.add('show');
+        }
+
+        close.onclick = () => modal.classList.remove('show');
+
+        window.onclick = (e) => {
+            if (e.target == modal) modal.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
